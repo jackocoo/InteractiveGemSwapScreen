@@ -1,0 +1,19 @@
+Shader.source[document.currentScript.src.split('js/shaders/')[1]] = `#version 300 es
+  in vec3 vertexPosition;
+  in vec3 vertexColor; //added this 
+
+
+
+  //uniform vec3 trianglePosition;
+  
+  //uniform mat4 modelMatrix;
+  uniform mat4 modelViewProjMatrix;
+
+  out vec3 color;
+
+  void main(void) {
+    //gl_Position = vec4(vertexPosition + trianglePosition, 1);
+    gl_Position = vec4 (vertexPosition, 1) * modelViewProjMatrix ; 
+    color = vertexColor;
+  }
+`;
